@@ -1,6 +1,6 @@
 FROM httpd:latest
 
-COPY ./oxer-html /var/www/html
+COPY ./oxer-html /usr/local/apache2/htdocs
 
 EXPOSE 80
 
