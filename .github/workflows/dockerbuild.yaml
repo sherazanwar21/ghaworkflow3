@@ -1,0 +1,39 @@
+name: Docker Build
+
+on:
+    push:
+        tags:
+            - '*' 
+
+jobs:
+    build_and_push:
+        runs-on: ubuntu:latest
+
+        steps:
+        - name: checkout code
+          uses: actions/checkout@v2
+        
+        - name: 
+          uses: docker/setup-buildx-actions@v2
+        
+        - name: build and tag docker image (incremental)
+          run: |
+            docker build -t "${{ secrets.DOCKER_USERID }}/myhttpd:${{ github.ref_name }}" .
+          working-directory: Docker
+
+        - name: build and tag docker image (latest)
+          run: |
+            docker build -t "${{ secrets.DOCKER_USERID }}/myhttpd:latest" .
+          working-directory: Docker
+
+        - name: login docker hub
+          run: |
+            echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERID }}" --password-stdin
+
+        - name: push docker image to docker hub
+          run: docker push "${{ secrets.DOCKER_USERID }}/myhttpd:${{ github.ref_name }}"
+          working-directory: Docker
+
+        - name: push docker image to docker hub
+          run: docker push "${{ secrets.DOCKER_USERID }}/myhttpd:latest"
+          working-directory: Docker
