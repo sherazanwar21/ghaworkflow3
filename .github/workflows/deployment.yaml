@@ -30,3 +30,8 @@ jobs:
     - name: apply deployment
       run: kubectl apply -f deployment.yaml
       working-directory: kubernetes
+
+    - name: apply loadbalancer-service
+      run: kubectl apply -f deployment-loadbalancer.yaml
+      working-directory: kubernetes
+    
