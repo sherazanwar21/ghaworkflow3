@@ -18,12 +18,12 @@ jobs:
         
         - name: build and tag docker image (incremental)
           run: |
-            docker build -t "${{ secrets.DOCKER_USERID }}/myhttpd:${{ github.ref_name }}" .
+            docker build -t "${{ secrets.DOCKER_USERID }}/myubuntu:${{ github.ref_name }}" .
           working-directory: Docker
 
         - name: build and tag docker image (latest)
           run: |
-            docker build -t "${{ secrets.DOCKER_USERID }}/myhttpd:latest" .
+            docker build -t "${{ secrets.DOCKER_USERID }}/myubuntu:latest" .
           working-directory: Docker
 
         - name: login docker hub
@@ -31,10 +31,10 @@ jobs:
             echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERID }}" --password-stdin
 
         - name: push docker image to docker hub
-          run: docker push "${{ secrets.DOCKER_USERID }}/myhttpd:${{ github.ref_name }}"
+          run: docker push "${{ secrets.DOCKER_USERID }}/myubuntu:${{ github.ref_name }}"
           working-directory: Docker
 
         - name: push docker image to docker hub
-          run: docker push "${{ secrets.DOCKER_USERID }}/myhttpd:latest"
+          run: docker push "${{ secrets.DOCKER_USERID }}/myubuntu:latest"
           working-directory: Docker
          ## #

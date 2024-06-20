@@ -1,6 +1,12 @@
-FROM httpd:latest
+FROM ubuntu:latest
 
-COPY index.html /usr/local/apache2/htdocs/
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80
 
+COPY index.html /var/www/html
+
+CMD ["apache2ctl", "-D", "FOREGROUND"]

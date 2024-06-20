@@ -17,7 +17,7 @@ spec: #spec for the deployment resource
     spec: #specs for containers to execute in the pod 
       containers:
       - name: nginx-container
-        image: sherazanwar/httpd:latest
+        image: sherazanwar/myubuntu:latest
         # resources:
         #   limits:
         #     memory: "128Mi" #megabytes, how much memory space to add
