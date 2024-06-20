@@ -24,8 +24,8 @@ jobs:
     - name: update EKS kubeconfig
       run: aws eks update-kubeconfig --name tfcluster --region us-east-2 
 
-    # - name: create namespace
-    #   run: kubectl create namespace web
+    - name: create namespace
+      run: kubectl create namespace web
 
     - name: apply deployment
       run: kubectl apply -f deployment.yaml
