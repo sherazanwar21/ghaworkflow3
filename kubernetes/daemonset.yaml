@@ -14,8 +14,8 @@ spec: #spec for daemonset resource
       labels: 
         pod: daemonset-pod
     spec:
-      nodeSelector: #chosing which nodes to create pods
-        test: passed #created labels with kubectl label nodes ip test=passed
+      # nodeSelector: #chosing which nodes to create pods
+      #   test: passed #created labels with kubectl label nodes ip test=passed
       containers:
       - name: nginx-container
         image: sherazanwar/httpd:latest
