@@ -7,6 +7,6 @@ RUN apt-get update && \
 
 EXPOSE 80
 
-COPY index.html /var/www/html
+COPY html /var/www/html
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
