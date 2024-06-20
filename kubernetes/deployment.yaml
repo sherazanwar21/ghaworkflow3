@@ -16,7 +16,7 @@ spec: #spec for the deployment resource
         pod: ubuntu-httpd
     spec: #specs for containers to execute in the pod 
       containers:
-      - name: nginx-container
+      - name: httpd-container
         image: sherazanwar/myubuntu:latest
         # resources:
         #   limits:
